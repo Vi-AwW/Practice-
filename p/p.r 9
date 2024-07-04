@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <math.h>
+
+int minSteps(int x, int y) {
+    int steps = 0;
+    int pos = x;
+    int step_length = 1;
+
+    while (pos < y) {
+        pos += step_length;
+        steps++;
+
+     
+        if (pos >= y) {
+            break;
+        }
+
+        
+        int max_possible_step = step_length + 1;
+        
+     
+        if (pos + max_possible_step <= y) {
+            step_length = max_possible_step;
+        } else {
+            step_length = y - pos;
+        }
+    }
+
+    return steps;
+}
+
+int main() {
+    int x = 45;
+    int y = 48;
+    printf("Minimum steps from %d to %d: %d\n", x, y, minSteps(x, y));
+    
+    x = 45;
+    y = 49;
+    printf("Minimum steps from %d to %d: %d\n", x, y, minSteps(x, y));
+    
+    x = 45;
+    y = 50;
+    printf("Minimum steps from %d to %d: %d\n", x, y, minSteps(x, y));
+    
+    x = 45;
+    y = 51;
+    printf("Minimum steps from %d to %d: %d\n", x, y, minSteps(x, y));
+    
+    return 0;
+}
